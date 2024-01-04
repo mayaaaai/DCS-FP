@@ -1,4 +1,4 @@
-package Project6.Intersection1;
+package Project6.Intersection2;
 
 import Components.*;
 import DataObjects.DataInteger;
@@ -8,7 +8,6 @@ import DataOnly.TransferOperation;
 import Enumerations.LogicConnector;
 import Enumerations.TransitionCondition;
 import Enumerations.TransitionOperation;
-
 
 public class Controller {
 
@@ -24,17 +23,18 @@ public class Controller {
         ini.SetValue("red");
         pn.ConstantPlaceList.add(ini);
 
-        DataString in1 = new DataString();
-        in1.SetName("in1");
-        pn.PlaceList.add(in1);
+        DataString in4 = new DataString();
+        in4.SetName("in4");
+        pn.PlaceList.add(in4);
 
-        DataString in2 = new DataString();
-        in2.SetName("in2");
-        pn.PlaceList.add(in2);
+        DataString in5 = new DataString();
+        in5.SetName("in5");
+        pn.PlaceList.add(in5);
 
-        DataString in3 = new DataString();
-        in3.SetName("in3");
-        pn.PlaceList.add(in3);
+        DataString in6 = new DataString();
+        in6.SetName("in6");
+        pn.PlaceList.add(in6);
+
 
         DataString red = new DataString();
         //red.Printable = false;
@@ -85,18 +85,18 @@ public class Controller {
 
 
         DataTransfer p8 = new DataTransfer();
-        p8.SetName("OP1");
-        p8.Value = new TransferOperation("localhost", "1080" , "P_TL1");
+        p8.SetName("OP4");
+        p8.Value = new TransferOperation("localhost", "1080" , "P_TL4");
         pn.PlaceList.add(p8);
 
         DataTransfer p9 = new DataTransfer();
-        p9.SetName("OP2");
-        p9.Value = new TransferOperation("localhost", "1080" , "P_TL2");
+        p9.SetName("OP5");
+        p9.Value = new TransferOperation("localhost", "1080" , "P_TL5");
         pn.PlaceList.add(p9);
 
         DataTransfer p10 = new DataTransfer();
-        p10.SetName("OP3");
-        p10.Value = new TransferOperation("localhost", "1080" , "P_TL3");
+        p10.SetName("OP6");
+        p10.Value = new TransferOperation("localhost", "1080" , "P_TL6");
         pn.PlaceList.add(p10);
 
         DataInteger Five = new DataInteger();
@@ -121,9 +121,9 @@ public class Controller {
         GuardMapping grdiniT = new GuardMapping();
         grdiniT.condition= iniTCt1;
 
-        grdiniT.Activations.add(new Activation(tini, "ini", TransitionOperation.SendOverNetwork, "OP1"));
-        grdiniT.Activations.add(new Activation(tini, "ini", TransitionOperation.SendOverNetwork, "OP2"));
-        grdiniT.Activations.add(new Activation(tini, "ini", TransitionOperation.SendOverNetwork, "OP3"));
+        grdiniT.Activations.add(new Activation(tini, "ini", TransitionOperation.SendOverNetwork, "OP4"));
+        grdiniT.Activations.add(new Activation(tini, "ini", TransitionOperation.SendOverNetwork, "OP5"));
+        grdiniT.Activations.add(new Activation(tini, "ini", TransitionOperation.SendOverNetwork, "OP6"));
         grdiniT.Activations.add(new Activation(tini, "", TransitionOperation.MakeNull, "ini"));
 
         tini.GuardMappingList.add(grdiniT);
@@ -143,7 +143,7 @@ public class Controller {
         GuardMapping grdT1 = new GuardMapping();
         grdT1.condition= T1Ct1;
         grdT1.Activations.add(new Activation(t1, "r1r2r3", TransitionOperation.Move, "g1r2r3"));
-        grdT1.Activations.add(new Activation(t1, "green", TransitionOperation.SendOverNetwork, "OP1"));
+        grdT1.Activations.add(new Activation(t1, "green", TransitionOperation.SendOverNetwork, "OP4"));
         grdT1.Activations.add(new Activation(t1, "Ten", TransitionOperation.DynamicDelay,""));
         t1.GuardMappingList.add(grdT1);
 
@@ -157,29 +157,29 @@ public class Controller {
 
 
         Condition T2Ct1 = new Condition(t2, "g1r2r3", TransitionCondition.NotNull);
-        Condition T2Ct2 = new Condition(t2, "in1", TransitionCondition.NotNull);
+        Condition T2Ct2 = new Condition(t2, "in4", TransitionCondition.NotNull);
         T2Ct1.SetNextCondition(LogicConnector.AND, T2Ct2);
 
         GuardMapping grdT2 = new GuardMapping();
         grdT2.condition= T2Ct1;
         grdT2.Activations.add(new Activation(t2, "g1r2r3", TransitionOperation.Move, "y1r2r3"));
-        grdT2.Activations.add(new Activation(t2, "yellow", TransitionOperation.SendOverNetwork, "OP1"));
+        grdT2.Activations.add(new Activation(t2, "yellow", TransitionOperation.SendOverNetwork, "OP4"));
         grdT2.Activations.add(new Activation(t2, "Ten", TransitionOperation.DynamicDelay,""));
 
 
         Condition T2Ct3 = new Condition(t2, "g1r2r3", TransitionCondition.NotNull);
-        Condition T2Ct4 = new Condition(t2, "in1", TransitionCondition.IsNull);
+        Condition T2Ct4 = new Condition(t2, "in4", TransitionCondition.IsNull);
         T2Ct3.SetNextCondition(LogicConnector.AND, T2Ct4);
 
         GuardMapping grdT22 = new GuardMapping();
         grdT22.condition= T2Ct3;
         grdT22.Activations.add(new Activation(t2, "g1r2r3", TransitionOperation.Move, "r1g2r3"));
-        grdT22.Activations.add(new Activation(t2, "red", TransitionOperation.SendOverNetwork, "OP1"));
+        grdT22.Activations.add(new Activation(t2, "green", TransitionOperation.SendOverNetwork, "OP5"));
         grdT22.Activations.add(new Activation(t2, "Five", TransitionOperation.DynamicDelay,""));
+
 
         t2.GuardMappingList.add(grdT2);
         t2.GuardMappingList.add(grdT22);
-
 
         pn.Transitions.add(t2);
 
@@ -196,14 +196,13 @@ public class Controller {
         GuardMapping grdT3 = new GuardMapping();
         grdT3.condition= T3Ct1;
         grdT3.Activations.add(new Activation(t3, "y1r2r3", TransitionOperation.Move, "r1g2r3"));
-        grdT3.Activations.add(new Activation(t3, "red", TransitionOperation.SendOverNetwork, "OP1"));
-        grdT3.Activations.add(new Activation(t3, "green", TransitionOperation.SendOverNetwork, "OP2"));
+        grdT3.Activations.add(new Activation(t3, "red", TransitionOperation.SendOverNetwork, "OP4"));
+        grdT3.Activations.add(new Activation(t3, "green", TransitionOperation.SendOverNetwork, "OP5"));
         grdT3.Activations.add(new Activation(t3, "Ten", TransitionOperation.DynamicDelay,""));
-        t3.GuardMappingList.add(grdT3);
+        t1.GuardMappingList.add(grdT3);
 
 
         pn.Transitions.add(t3);
-
 
         //----------------------------T4------------------------------------
         PetriTransition t4 = new PetriTransition(pn);
@@ -212,24 +211,25 @@ public class Controller {
 
 
         Condition T4Ct1 = new Condition(t4, "r1g2", TransitionCondition.NotNull);
-        Condition T4Ct2 = new Condition(t4, "in2", TransitionCondition.NotNull);
+        Condition T4Ct2 = new Condition(t4, "in5", TransitionCondition.NotNull);
         T4Ct1.SetNextCondition(LogicConnector.AND, T4Ct2);
 
         GuardMapping grdT4 = new GuardMapping();
         grdT4.condition= T4Ct1;
         grdT4.Activations.add(new Activation(t4, "r1g2r3", TransitionOperation.Move, "r1y2r3"));
-        grdT4.Activations.add(new Activation(t4, "yellow", TransitionOperation.SendOverNetwork, "OP2"));
+        grdT4.Activations.add(new Activation(t4, "yellow", TransitionOperation.SendOverNetwork, "OP5"));
+        grdT4.Activations.add(new Activation(t4, "Ten", TransitionOperation.DynamicDelay,""));
+
 
         Condition T4Ct3 = new Condition(t4, "r1g2r3", TransitionCondition.NotNull);
-        Condition T4Ct4 = new Condition(t4, "in2", TransitionCondition.IsNull);
+        Condition T4Ct4 = new Condition(t4, "in5", TransitionCondition.IsNull);
         T4Ct3.SetNextCondition(LogicConnector.AND, T4Ct4);
 
         GuardMapping grdT42 = new GuardMapping();
         grdT42.condition= T4Ct3;
         grdT42.Activations.add(new Activation(t4, "r1g2r3", TransitionOperation.Move, "r1r2g3"));
-        grdT42.Activations.add(new Activation(t4, "green", TransitionOperation.SendOverNetwork, "OP2"));
+        grdT42.Activations.add(new Activation(t4, "green", TransitionOperation.SendOverNetwork, "OP6"));
         grdT42.Activations.add(new Activation(t4, "Five", TransitionOperation.DynamicDelay,""));
-
 
         t4.GuardMappingList.add(grdT4);
         t4.GuardMappingList.add(grdT42);
@@ -249,9 +249,9 @@ public class Controller {
         GuardMapping grdT5 = new GuardMapping();
         grdT5.condition= T5Ct1;
         grdT5.Activations.add(new Activation(t5, "r1y2r3", TransitionOperation.Move, "r1r2g3"));
-        grdT5.Activations.add(new Activation(t5, "green", TransitionOperation.SendOverNetwork, "OP3"));
-        grdT5.Activations.add(new Activation(t5, "red", TransitionOperation.SendOverNetwork, "OP2"));
-        grdT5.Activations.add(new Activation(t5, "Ten", TransitionOperation.DynamicDelay,""));
+        grdT5.Activations.add(new Activation(t5, "green", TransitionOperation.SendOverNetwork, "OP6"));
+        grdT5.Activations.add(new Activation(t5, "red", TransitionOperation.SendOverNetwork, "OP5"));
+        grdT5.Activations.add(new Activation(t5, "Five", TransitionOperation.DynamicDelay,""));
 
         t5.GuardMappingList.add(grdT5);
 
@@ -264,27 +264,27 @@ public class Controller {
         t6.InputPlaceName.add("r1r2g3");
 
         Condition T6Ct1 = new Condition(t6, "r1r2g3", TransitionCondition.NotNull);
-        Condition T6Ct2 = new Condition(t6, "in3", TransitionCondition.NotNull);
+        Condition T6Ct2 = new Condition(t6, "in6", TransitionCondition.NotNull);
         T6Ct1.SetNextCondition(LogicConnector.AND, T6Ct2);
 
         GuardMapping grdT6 = new GuardMapping();
         grdT6.condition= T6Ct1;
         grdT6.Activations.add(new Activation(t6, "r1r2g3", TransitionOperation.Move, "r1r2y3"));
-        grdT6.Activations.add(new Activation(t6, "yellow", TransitionOperation.SendOverNetwork, "OP3"));
+        grdT6.Activations.add(new Activation(t6, "yellow", TransitionOperation.SendOverNetwork, "OP6"));
+        grdT6.Activations.add(new Activation(t6, "Ten", TransitionOperation.DynamicDelay,""));
 
         Condition T6Ct3 = new Condition(t6, "r1r2g3", TransitionCondition.NotNull);
-        Condition T6Ct4 = new Condition(t6, "in3", TransitionCondition.IsNull);
+        Condition T6Ct4 = new Condition(t6, "in6", TransitionCondition.IsNull);
         T6Ct3.SetNextCondition(LogicConnector.AND, T6Ct4);
 
         GuardMapping grdT62 = new GuardMapping();
         grdT62.condition= T6Ct3;
         grdT62.Activations.add(new Activation(t6, "r1r2g3", TransitionOperation.Move, "r1r2r3"));
-        grdT62.Activations.add(new Activation(t6, "red", TransitionOperation.SendOverNetwork, "OP3"));
+        grdT62.Activations.add(new Activation(t6, "red", TransitionOperation.SendOverNetwork, "OP5"));
         grdT62.Activations.add(new Activation(t6, "Five", TransitionOperation.DynamicDelay,""));
 
         t6.GuardMappingList.add(grdT6);
         t6.GuardMappingList.add(grdT62);
-
 
 
         pn.Transitions.add(t6);
@@ -300,8 +300,9 @@ public class Controller {
         GuardMapping grdT7 = new GuardMapping();
         grdT7.condition= T7Ct1;
         grdT7.Activations.add(new Activation(t7, "r1r2y3", TransitionOperation.Move, "r1r2r3"));
-        grdT7.Activations.add(new Activation(t7, "red", TransitionOperation.SendOverNetwork, "OP3"));
-        grdT7.Activations.add(new Activation(t7, "Ten", TransitionOperation.DynamicDelay,""));
+        grdT7.Activations.add(new Activation(t7, "red", TransitionOperation.SendOverNetwork, "OP6"));
+        grdT6.Activations.add(new Activation(t7, "Ten", TransitionOperation.DynamicDelay,""));
+
 
         t7.GuardMappingList.add(grdT7);
 
