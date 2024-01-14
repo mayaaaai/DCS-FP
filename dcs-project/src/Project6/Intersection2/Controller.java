@@ -86,17 +86,17 @@ public class Controller {
 
         DataTransfer p8 = new DataTransfer();
         p8.SetName("OP4");
-        p8.Value = new TransferOperation("localhost", "1080" , "P_TL4");
+        p8.Value = new TransferOperation("localhost", "1083" , "P_TL4");
         pn.PlaceList.add(p8);
 
         DataTransfer p9 = new DataTransfer();
         p9.SetName("OP5");
-        p9.Value = new TransferOperation("localhost", "1080" , "P_TL5");
+        p9.Value = new TransferOperation("localhost", "1083" , "P_TL5");
         pn.PlaceList.add(p9);
 
         DataTransfer p10 = new DataTransfer();
         p10.SetName("OP6");
-        p10.Value = new TransferOperation("localhost", "1080" , "P_TL6");
+        p10.Value = new TransferOperation("localhost", "1083" , "P_TL6");
         pn.PlaceList.add(p10);
 
         DataInteger Five = new DataInteger();

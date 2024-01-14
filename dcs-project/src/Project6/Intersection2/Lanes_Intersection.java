@@ -125,7 +125,7 @@ public class Lanes_Intersection {
 
         GuardMapping grdTi4 = new GuardMapping();
         grdTi4.condition = Ti4_Ct1;
-        grdTi4.Activations.add(new Activation(t_i4, "P_b1", TransitionOperation.AddElement, "P_i2"));
+        grdTi4.Activations.add(new Activation(t_i4, "P_b4", TransitionOperation.AddElement, "P_i2"));
         t_i4.GuardMappingList.add(grdTi4);
 
         t_i4.Delay = 0;
@@ -168,7 +168,7 @@ public class Lanes_Intersection {
 
         // T_e8
         PetriTransition t_e8 = new PetriTransition(pn);
-        t_e8.TransitionName = "t_e8";
+        t_e8.TransitionName = "T_e8";
         t_e8.InputPlaceName.add("P_o7");
 
         Condition Te8Ct1 = new Condition(t_e8, "P_o7", TransitionCondition.HaveCar);
@@ -242,7 +242,7 @@ public class Lanes_Intersection {
 
         // T_e4
         PetriTransition t_e12 = new PetriTransition(pn);
-        t_e12.TransitionName = "t_e12";
+        t_e12.TransitionName = "T_e12";
         t_e12.InputPlaceName.add("P_o11");
 
         Condition Te12Ct1 = new Condition(t_e12, "P_o11", TransitionCondition.HaveCar);
