@@ -64,7 +64,7 @@ public class Lanes_Intersection {
     //Implementing OP1 as an output channel connected to the controller
     DataTransfer OP1 = new DataTransfer();
     OP1.SetName("OP1");
-    OP1.Value = new TransferOperation("localhost", "1081", "in");
+    OP1.Value = new TransferOperation("localhost", "1080", "in");
     pn.PlaceList.add(OP1);
 
     //-------Transitions-------
@@ -258,7 +258,7 @@ public class Lanes_Intersection {
     //Implementing OP2 as an output channel connected to the controller
     DataTransfer OP2 = new DataTransfer();
     OP2.SetName("OP2");
-    OP2.Value = new TransferOperation("localhost", "1081", "in");
+    OP2.Value = new TransferOperation("localhost", "1080", "in");
     pn.PlaceList.add(OP2);
 
     //-------Transitions-------
@@ -433,7 +433,7 @@ public class Lanes_Intersection {
     //Implementing OP3 as an output channel connected to the controller
     DataTransfer OP3 = new DataTransfer();
     OP3.SetName("OP3");
-    OP3.Value = new TransferOperation("localhost", "1081", "in");
+    OP3.Value = new TransferOperation("localhost", "1080", "in");
     pn.PlaceList.add(OP3);
 
     //-------Transitions-------

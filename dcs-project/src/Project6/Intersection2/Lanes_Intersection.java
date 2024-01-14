@@ -351,17 +351,6 @@ public class Lanes_Intersection {
         t_i6.Delay = 0;
         pn.Transitions.add(t_i6);
 
-        // T_street4
-//    PetriTransition t_street4 = new PetriTransition(pn);
-//    t_street4.TransitionName = "T_street4";
-//    t_street4.InputPlaceName.add("P_street2");
-//
-//    Condition T_street4_Ct = new Condition(t_street4, "P_street2", TransitionCondition.NotNull);
-//
-//    GuardMapping grdTstreet4 = new GuardMapping();
-//    grdTstreet4.condition = T_street4_Ct;
-//    grdTstreet4.Activations.add(new Activation(t_street4, "P_street2", TransitionOperation.SendOverNetwork, "P_street2"));
-
 
 
         // -----------------------------------------------------------------------
