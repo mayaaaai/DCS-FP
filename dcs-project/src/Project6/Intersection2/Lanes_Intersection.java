@@ -141,12 +141,9 @@ public class Lanes_Intersection {
         p_o8.SetName("P_o8");
         pn.PlaceList.add(p_o8);
 
-        DataCar p_street1 = new DataCar();
-        p_street1.SetName("P_street1");
-        pn.PlaceList.add(p_street1);
-
-        DataCar p_street2 = new DataCar();
+        DataTransfer p_street2 = new DataTransfer();
         p_street2.SetName("P_street2");
+        p_street2.Value = new TransferOperation("localhost", "1082", "P_a2");
         pn.PlaceList.add(p_street2);
 
         //-------Transitions-------
@@ -184,7 +181,7 @@ public class Lanes_Intersection {
         t_e8.Delay = 0;
         pn.Transitions.add(t_e8);
 
-        // T_street1
+        // T_street3
         PetriTransition t_street3 = new PetriTransition(pn);
         t_street3.TransitionName = "T_street3";
         t_street3.InputPlaceName.add("P_o8");
@@ -193,7 +190,20 @@ public class Lanes_Intersection {
 
         GuardMapping grdTstreet3 = new GuardMapping();
         grdTstreet3.condition = T_street3_Ct;
-        grdTstreet3.Activations.add(new Activation(t_street3, "P_o8", TransitionOperation.SendOverNetwork, "P_street3"));
+        grdTstreet3.Activations.add(new Activation(t_street3, "P_o8", TransitionOperation.Move, "P_street2"));
+
+
+        // T_street4
+        PetriTransition t_street4 = new PetriTransition(pn);
+        t_street4.TransitionName = "T_street4";
+        t_street4.InputPlaceName.add("P_street2");
+
+        Condition T_street4_Ct = new Condition(t_street4, "P_street2", TransitionCondition.NotNull);
+
+        GuardMapping grdTstreet4 = new GuardMapping();
+        grdTstreet4.condition = T_street4_Ct;
+        grdTstreet4.Activations.add(new Activation(t_street4, "P_street2", TransitionOperation.SendOverNetwork, "P_a2"));
+
 
 
         // -----------------------------------------------------------------------

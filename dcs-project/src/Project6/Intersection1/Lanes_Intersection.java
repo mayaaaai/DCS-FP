@@ -344,9 +344,11 @@ public class Lanes_Intersection {
     p_street1.SetName("P_street1");
     pn.PlaceList.add(p_street1);
 
-    DataCar p_street2 = new DataCar();
-    p_street2.SetName("P_street2");
-    pn.PlaceList.add(p_street2);
+
+    DataTransfer P_street1 = new DataTransfer();
+    P_street1.SetName("P_street1");
+    P_street1.Value = new TransferOperation("localhost", "1083", "P_a4");
+    pn.PlaceList.add(P_street1);
 
     //-------Transitions-------
 
@@ -392,18 +394,18 @@ public class Lanes_Intersection {
 
     GuardMapping grdTstreet1 = new GuardMapping();
     grdTstreet1.condition = T_street1_Ct;
-    grdTstreet1.Activations.add(new Activation(t_street1, "P_o6", TransitionOperation.SendOverNetwork, "P_street1"));
+    grdTstreet1.Activations.add(new Activation(t_street1, "P_o6", TransitionOperation.Move, "P_street1"));
 
     // T_street2
-//    PetriTransition t_street2 = new PetriTransition(pn);
-//    t_street2.TransitionName = "T_street2";
-//    t_street2.InputPlaceName.add("P_street1");
-//
-//    Condition T_street2_Ct = new Condition(t_street2, "P_street1", TransitionCondition.NotNull);
-//
-//    GuardMapping grdTstreet2 = new GuardMapping();
-//    grdTstreet2.condition = T_street2_Ct;
-//    grdTstreet2.Activations.add(new Activation(t_street2, "P_street1", TransitionOperation.SendOverNetwork, "P_street1"));
+    PetriTransition t_street2 = new PetriTransition(pn);
+    t_street2.TransitionName = "T_street2";
+    t_street2.InputPlaceName.add("P_street1");
+
+    Condition T_street2_Ct = new Condition(t_street2, "P_street1", TransitionCondition.NotNull);
+
+    GuardMapping grdTstreet2 = new GuardMapping();
+    grdTstreet2.condition = T_street2_Ct;
+    grdTstreet2.Activations.add(new Activation(t_street2, "P_street1", TransitionOperation.SendOverNetwork, "P_a4"));
 
 
     // -----------------------------------------------------------------------
