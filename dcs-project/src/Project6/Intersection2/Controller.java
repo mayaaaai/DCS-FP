@@ -228,7 +228,7 @@ public class Controller {
         GuardMapping grdT42 = new GuardMapping();
         grdT42.condition= T4Ct3;
         grdT42.Activations.add(new Activation(t4, "r1g2r3", TransitionOperation.Move, "r1y2r3"));
-        grdT42.Activations.add(new Activation(t4, "yellow", TransitionOperation.SendOverNetwork, "OP6"));
+        grdT42.Activations.add(new Activation(t4, "yellow", TransitionOperation.SendOverNetwork, "OP5"));
         grdT42.Activations.add(new Activation(t4, "Five", TransitionOperation.DynamicDelay,""));
 
         t4.GuardMappingList.add(grdT4);
@@ -280,7 +280,7 @@ public class Controller {
         GuardMapping grdT62 = new GuardMapping();
         grdT62.condition= T6Ct3;
         grdT62.Activations.add(new Activation(t6, "r1r2g3", TransitionOperation.Move, "r1r2y3"));
-        grdT62.Activations.add(new Activation(t6, "yellow", TransitionOperation.SendOverNetwork, "OP5"));
+        grdT62.Activations.add(new Activation(t6, "yellow", TransitionOperation.SendOverNetwork, "OP6"));
         grdT62.Activations.add(new Activation(t6, "Five", TransitionOperation.DynamicDelay,""));
 
         t6.GuardMappingList.add(grdT6);

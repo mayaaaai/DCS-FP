@@ -15,7 +15,7 @@ public class Lanes_Intersection {
         PetriNet pn = new PetriNet();
         pn.PetriNetName = "Lanes Intersection";
 
-        pn.NetworkPort = 1080;
+        pn.NetworkPort = 1083;
 
         DataString full = new DataString();
         full.SetName("full");
@@ -93,7 +93,7 @@ public class Lanes_Intersection {
         t_u7.Delay = 0;
         pn.Transitions.add(t_u7);
 
-        // T_u2 -----------------
+        // T_u8 -----------------
         PetriTransition t_u8 = new PetriTransition(pn);
         t_u8.TransitionName = "T_u8";
         t_u8.InputPlaceName.add("P_x4");
@@ -125,7 +125,7 @@ public class Lanes_Intersection {
 
         GuardMapping grdTi4 = new GuardMapping();
         grdTi4.condition = Ti4_Ct1;
-        grdTi4.Activations.add(new Activation(t_i4, "P_b1", TransitionOperation.AddElement, "P_i1"));
+        grdTi4.Activations.add(new Activation(t_i4, "P_b1", TransitionOperation.AddElement, "P_i2"));
         t_i4.GuardMappingList.add(grdTi4);
 
         t_i4.Delay = 0;

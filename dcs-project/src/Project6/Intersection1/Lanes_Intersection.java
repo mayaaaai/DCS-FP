@@ -21,7 +21,7 @@ public class Lanes_Intersection {
     PetriNet pn = new PetriNet();
     pn.PetriNetName = "Lanes Intersection";
 
-    pn.NetworkPort = 1080;
+    pn.NetworkPort = 1082;
 
     DataString full = new DataString();
     full.SetName("full");
