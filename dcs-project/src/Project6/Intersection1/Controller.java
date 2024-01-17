@@ -14,7 +14,7 @@ public class Controller {
 
     public static void main (String []args) {
         PetriNet pn = new PetriNet();
-        pn.PetriNetName = "Controller";
+        pn.PetriNetName = "Controller1";
         pn.SetName("Controller");
         pn.NetworkPort = 1080;
 
@@ -101,12 +101,12 @@ public class Controller {
 
         DataInteger Five = new DataInteger();
         Five.SetName("Five");
-        Five.SetValue(500);
+        Five.SetValue(0.5);
         pn.ConstantPlaceList.add(Five);
 
         DataInteger Ten = new DataInteger();
         Ten.SetName("Ten");
-        Ten.SetValue(1000);
+        Ten.SetValue(1);
         pn.ConstantPlaceList.add(Ten);
 
 
@@ -135,6 +135,7 @@ public class Controller {
         //----------------------------T1------------------------------------
         PetriTransition t1 = new PetriTransition(pn);
         t1.TransitionName = "T1";
+        t1.InputPlaceName.add("ini");
         t1.InputPlaceName.add("r1r2r3");
 
 

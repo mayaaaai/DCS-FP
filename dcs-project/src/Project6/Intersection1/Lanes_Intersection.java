@@ -19,7 +19,7 @@ public class Lanes_Intersection {
   public static void main(String[] args) {
 
     PetriNet pn = new PetriNet();
-    pn.PetriNetName = "Lanes Intersection";
+    pn.PetriNetName = "Lanes Intersection1";
 
     pn.NetworkPort = 1082;
 
@@ -91,7 +91,7 @@ public class Lanes_Intersection {
     GuardMapping grdTu1_1 = new GuardMapping();
     grdTu1_1.condition= Tu1Ct3;
     grdTu1_1.Activations.add(new Activation(t_u1, "full", TransitionOperation.SendOverNetwork, "OP1"));
-    grdTu1_1.Activations.add(new Activation(t_u1, "P_a1", TransitionOperation.Move, "P_a1")); //Copy -> Move
+    grdTu1_1.Activations.add(new Activation(t_u1, "P_a1", TransitionOperation.Copy, "P_a1")); //Copy -> Move
     t_u1.GuardMappingList.add(grdTu1_1);
 
     t_u1.Delay = 0;

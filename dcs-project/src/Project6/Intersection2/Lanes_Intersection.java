@@ -13,7 +13,7 @@ import Enumerations.TransitionOperation;
 public class Lanes_Intersection {
     public static void main(String[] args) {
         PetriNet pn = new PetriNet();
-        pn.PetriNetName = "Lanes Intersection";
+        pn.PetriNetName = "Lanes Intersection2";
 
         pn.NetworkPort = 1083;
 
